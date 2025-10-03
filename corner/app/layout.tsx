@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
 import { MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
+import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
+import { Geist } from "next/font/google";
 import "../app/global/styles/globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -29,6 +30,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
         <MantineProvider>
+          <Notifications
+            position="bottom-right"
+            zIndex={1000}
+            containerWidth={400}
+            limit={5}
+          />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
