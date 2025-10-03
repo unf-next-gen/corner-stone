@@ -8,7 +8,10 @@
   },
   "dependencies": {
     "@mantine/core": "^8.3.2",
+    "@mantine/dropzone": "^8.3.3",
+    "@mantine/form": "^8.3.3",
     "@mantine/hooks": "^8.3.2",
+    "@mantine/notifications": "^8.3.3",
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",
     "class-variance-authority": "^0.7.1",
