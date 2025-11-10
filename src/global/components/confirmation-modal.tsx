@@ -1,23 +1,8 @@
 "use client";
 
 import { Modal, Button, Group, Stack } from "@mantine/core";
-import { Signal } from "@preact/signals-react";
 import { useSignals } from "@preact/signals-react/runtime";
-import { ReactNode } from "react";
-
-interface ConfirmationModalProps {
-  opened: Signal<boolean>;
-  positiveAction: () => void | Promise<void>;
-  negativeAction?: () => void;
-  header?: string | ReactNode;
-  body: string | ReactNode;
-  footer?: ReactNode;
-  positiveLabel?: string;
-  negativeLabel?: string;
-  positiveColor?: string;
-  centered?: boolean;
-  loading?: boolean;
-}
+import type { ConfirmationModalProps } from "../types";
 
 export function ConfirmationModal({
   opened,

@@ -4,11 +4,7 @@ import { Button } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-
-interface BackButtonProps {
-  text?: string;
-  href?: string;
-}
+import type { BackButtonProps } from '../types';
 
 export function BackButton({ text = 'Go back', href }: BackButtonProps) {
   const router = useRouter();
