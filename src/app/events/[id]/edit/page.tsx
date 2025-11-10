@@ -2,7 +2,7 @@ import { Container, Title, Paper } from "@mantine/core";
 import { redirect, notFound } from "next/navigation";
 import { getUser } from "../../../auth/actions";
 import { getEventById } from "../../actions";
-import { EditEventClient } from "./edit-event-client";
+import { EventForm } from "../../components/event-form";
 
 export default async function EditEventPage({
   params,
@@ -27,7 +27,7 @@ export default async function EditEventPage({
         <Title order={2} mb="xl">
           Edit Event
         </Title>
-        <EditEventClient event={event} />
+        <EventForm event={event} mode="edit" />
       </Paper>
     </Container>
   );
