@@ -1,21 +1,5 @@
 import { z } from "zod";
-import type { EventData } from "./map-event-data";
-
-export interface ValidationResult {
-  isValid: boolean;
-  errors: Record<string, string>;
-}
-
-export interface EventFormData {
-  title?: string;
-  description?: string;
-  event_date?: string;
-  start_time?: string;
-  end_time?: string;
-  location?: string;
-  capacity?: string | number;
-  enrollment_type?: string;
-}
+import type { EventData, ValidationResult, EventFormData } from "../types";
 
 const eventFormSchema = z
   .object({
