@@ -1,4 +1,4 @@
-import VolunteerTable, { Volunteer } from "../../components/VolunteerTable";
+import VolunteerTable, { Volunteer } from "./components/VolunteerTable";
 import { Stack, Title, Text } from "@mantine/core";
 
 const MOCK: Volunteer[] = [
