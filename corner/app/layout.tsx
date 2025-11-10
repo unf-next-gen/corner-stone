@@ -1,6 +1,9 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -8,7 +11,7 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
+  title: "Cornerstone Connections",
   description: "The fastest way to build apps with Next.js and Supabase",
 };
 
@@ -32,7 +35,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <MantineProvider defaultColorScheme="light">
+            {children}
+          </MantineProvider>
         </ThemeProvider>
       </body>
     </html>
