@@ -1,6 +1,7 @@
 import { Container, Title, Text, Button, Paper, Group } from '@mantine/core';
 import { getUser, signOut } from './auth/actions';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 
 export default async function Home() {
   const user = await getUser();
@@ -35,7 +36,17 @@ export default async function Home() {
           </Text>
         </Paper>
 
-        <Group justify="center">
+        <Group justify="center" gap="md">
+          <Link href="/events">
+            <Button variant="filled">
+              View Events
+            </Button>
+          </Link>
+          <Link href="/profile">
+            <Button variant="light">
+              View Profile
+            </Button>
+          </Link>
           <form action={signOut}>
             <Button type="submit" variant="outline" color="red">
               Sign Out
