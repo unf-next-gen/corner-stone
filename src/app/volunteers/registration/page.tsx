@@ -530,7 +530,7 @@ export default function VolunteerRegisterPage() {
                 <Button
                   size="md"
                   radius="md"
-                  onClick={() => form.onSubmit(handleSubmit)}
+                  onClick={() => handleSubmit(form.getValues())}
                 >
                   Create Account
                 </Button>
