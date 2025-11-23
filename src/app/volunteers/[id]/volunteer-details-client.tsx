@@ -9,7 +9,7 @@ export default function VolunteerDetailsClient({ volunteer }: {volunteer: Volunt
             
                 
 
-                {/* Contact Information */}
+                
                 <div className="mb-6">
                     <h2 className="text-xl font-semibold mb-3">Contact Information</h2>
                     <div className="space-y-2">
@@ -19,7 +19,7 @@ export default function VolunteerDetailsClient({ volunteer }: {volunteer: Volunt
                     </div>
                 </div>
 
-                {/* Availability */}
+                
                 <div>
                     <h2 className="text-xl font-semibold mb-3">Availability</h2>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
