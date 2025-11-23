@@ -13,8 +13,8 @@ export default function VolunteerTable({ data }: { data: Volunteer[] }) {
     if (!q) return data;
     return data.filter(
       (v) =>
-        v.fName.toLowerCase().includes(q) ||
-        v.lName.toLowerCase().includes(q) ||
+        v.first_name.toLowerCase().includes(q) ||
+        v.last_name.toLowerCase().includes(q) ||
         v.email.toLowerCase().includes(q) ||
         v.phone.toLowerCase().includes(q)
     );
@@ -22,6 +22,7 @@ export default function VolunteerTable({ data }: { data: Volunteer[] }) {
 
   return (
     <div>
+      
       <TextInput
         placeholder="Search by name, email, or phone..."
         value={query}
@@ -95,10 +96,10 @@ export default function VolunteerTable({ data }: { data: Volunteer[] }) {
             {filtered.map((v) => (
               <Table.Tr key={v.id}>
                 <Table.Td style={{ textAlign: "center" }}>
-                 <Link href={`/volunteers/${v.id}`}><Text fz="sm">{v.fName}</Text></Link>
+                 <Link href={`/volunteers/${v.id}`}><Text fz="sm">{v.first_name}</Text></Link>
                 </Table.Td>
                 <Table.Td style={{ textAlign: "center" }}>
-                  <Text fz="sm">{v.lName}</Text>
+                  <Text fz="sm">{v.last_name}</Text>
                 </Table.Td>
                 <Table.Td style={{ textAlign: "center" }}>
                   <Text fz="sm">{v.phone}</Text>

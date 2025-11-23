@@ -38,6 +38,7 @@ export default function RootLayout({
           <Notifications />
           {children}
         </MantineProvider>
+      <div id="modal-root"></div>
       </body>
     </html>
   );

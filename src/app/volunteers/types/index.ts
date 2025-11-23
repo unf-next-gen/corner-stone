@@ -1,10 +1,20 @@
 export interface Volunteer {
     id: number;
     created_at: Date;
-    fName: string;
-    lName: string;
-    phone: string;
     email: string;
+    first_name: string;
+    last_name: string;
+    phone: string;
+
+    documents: {
+        url: string;
+        name: string;
+        size: number;
+        type: string;
+    }
+
+    is_processed: boolean; 
+    
     availability: {
         monday: boolean;
         tuesday: boolean;
