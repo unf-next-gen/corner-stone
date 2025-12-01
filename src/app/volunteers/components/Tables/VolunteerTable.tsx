@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Table, TextInput, Text, Anchor } from "@mantine/core";
-import { Volunteer } from "../../types";
+import { Volunteer, Availability } from "../../types";
 import Link from 'next/link';
 
 export default function VolunteerTable({ data }: { data: Volunteer[] }) {
@@ -13,16 +13,16 @@ export default function VolunteerTable({ data }: { data: Volunteer[] }) {
     if (!q) return data;
     return data.filter(
       (v) =>
-        v.first_name.toLowerCase().includes(q) ||
-        v.last_name.toLowerCase().includes(q) ||
-        v.email.toLowerCase().includes(q) ||
-        v.phone.toLowerCase().includes(q)
+        v.first_name!.toLowerCase().includes(q) ||
+        v.last_name!.toLowerCase().includes(q) ||
+        v.email!.toLowerCase().includes(q) ||
+        v.phone!.toLowerCase().includes(q)
     );
   }, [data, query]);
 
   return (
     <div>
-      
+
       <TextInput
         placeholder="Search by name, email, or phone..."
         value={query}
@@ -35,7 +35,7 @@ export default function VolunteerTable({ data }: { data: Volunteer[] }) {
           striped
           highlightOnHover
           withColumnBorders
-          withRowBorders 
+          withRowBorders
           verticalSpacing="sm"
           style={{
             textAlign: "center",
@@ -96,7 +96,7 @@ export default function VolunteerTable({ data }: { data: Volunteer[] }) {
             {filtered.map((v) => (
               <Table.Tr key={v.id}>
                 <Table.Td style={{ textAlign: "center" }}>
-                 <Link href={`/volunteers/${v.id}`}><Text fz="sm">{v.first_name}</Text></Link>
+                  <Link href={`/volunteers/${v.id}`}><Text fz="sm">{v.first_name}</Text></Link>
                 </Table.Td>
                 <Table.Td style={{ textAlign: "center" }}>
                   <Text fz="sm">{v.last_name}</Text>
@@ -111,10 +111,26 @@ export default function VolunteerTable({ data }: { data: Volunteer[] }) {
                 </Table.Td>
                 <Table.Td style={{ textAlign: "center" }}>
                   <Text fz="xs" c="dimmed">
-                    {Object.entries(v.availability)
-                      .filter(([, available]) => available)
-                      .map(([day]) => day.slice(0, 3))
-                      .join(", ") || "None"}
+                    {(() => {
+                      const av = v.volunteer_availability;
+                      if (!av) return "None";
+
+                      const daysOrder: (keyof Availability)[] = [
+                        "monday",
+                        "tuesday",
+                        "wednesday",
+                        "thursday",
+                        "friday",
+                        "saturday",
+                        "sunday",
+                      ];
+
+                      const availableDays = daysOrder
+                        .filter((day) => av[day] && av[day].length > 0)
+                        .map((day) => day.slice(0, 3).toUpperCase());
+
+                      return availableDays.length > 0 ? availableDays.join(", ") : "None";
+                    })()}
                   </Text>
                 </Table.Td>
               </Table.Tr>

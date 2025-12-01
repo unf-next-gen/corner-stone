@@ -1,17 +1,8 @@
 'use client'
 import React, { useState } from "react";
 import { Button } from "@mantine/core";
-import { createPortal } from "react-dom";
-
-type FilterData = {
-    monday: boolean;
-    tuesday: boolean;
-    wednesday: boolean;
-    thursday: boolean;
-    friday: boolean;
-    saturday: boolean;
-    sunday: boolean;
-};
+import { Modal, Title, MultiSelect, Stack, } from "@mantine/core";
+import { FilterData } from "../../types";
 
 type volunteerFilterModalProps = {
     isOpen: boolean; //isOpen to display
@@ -20,70 +11,109 @@ type volunteerFilterModalProps = {
 }
 
 
+
 export default function VolunteerFilterModal({ isOpen, onExit, onSubmit }: volunteerFilterModalProps) {
     const [selectedDays, setDays] = useState<string[]>([]);
+    const [selectedTimes, setTimes] = useState<string[]>([]);
+    const [selectedRoles, setRoles] = useState<string[]>([]);
+
 
     if (!isOpen) return null;
 
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    // Removed unused times variable
+    const times = ['Morning', 'Afternoon', 'Evening'];
 
-    const handleSelect = (day: string) => {
+    const handleSelectDays = (day: string) => {
         setDays(prev => prev.includes(day)
             ? prev.filter(d => d !== day)
             : [...prev, day]);
     };
+    const handleSelectTime = (time: string) => {
+        setTimes(prev => prev.includes(time)
+            ? prev.filter(d => d !== time)
+            : [...prev, time]);
+    };
 
-     const handleSubmit = () => {
+    const roles = [
+        { value: "events", label: "Event Hosting / Event Planning" },
+        { value: "interviews", label: "Mock Interviews" },
+        { value: "admin", label: "Administrative Support" },
+        { value: "career", label: "Career Exploration" },
+        { value: "training", label: "Virtual / In-Person Training" },
+        { value: "mentoring", label: "Mentoring / Tutoring" },
+        { value: "speakers", label: "Speakers Bureau" },
+        { value: "community outreach", label: "Community Outreach" },
+        { value: "clothing", label: "Community Clothing Closet" },
+        { value: "data", label: "Data Collection" },
+        { value: "donor outreach", label: "Donor Outreach" },
+        { value: "corperate outreach", label: "Corperate Outreach" },
+        { value: "donations", label: "In-Kind Donations" },
+        { value: "other", label: "Others" },
+    ];
+
+    const handleSubmit = () => {
         const filterData: FilterData = {
-            monday: selectedDays.includes('Monday'),
-            tuesday: selectedDays.includes('Tuesday'),
-            wednesday: selectedDays.includes('Wednesday'),
-            thursday: selectedDays.includes('Thursday'),
-            friday: selectedDays.includes('Friday'),
-            saturday: selectedDays.includes('Saturday'),
-            sunday: selectedDays.includes('Sunday'),
+            days: selectedDays, 
+            times: selectedTimes,
+            roles: selectedRoles,
         };
+
+        console.log(filterData);
         onSubmit(filterData);
     };
 
 
-
     return (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <Modal opened={isOpen} onClose={onExit} title="Volunteer Filters" size='lg' centered>
+            <Stack gap="lg">
+                <Title order={3}>Available Days</Title>
 
-            <div className="bg-white rounded-lg shadow-md max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                {/* <Button onClick={onExit}> x </Button> */}
-                <div className="p-6 space-y-6">
-                    {/* main content */}
-                    <div>
-                        <h3 className="text-lg font-medium mb-3">Days of the Week</h3>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                            {days.map(day => (
-                                <button key={day} onClick={() => handleSelect(day)}
-                                    className={`px-4 py-2 rounded-md border transition-colors 
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {days.map(day => (
+                        <button key={day} onClick={() => handleSelectDays(day)}
+                            className={`px-4 py-2 rounded-md border transition-colors 
                                     ${selectedDays.includes(day)
-                                            ? 'bg-blue-500 text-white border-blue-500'
-                                            : 'bg-white text-gray-700 border-gray-300 hover:border-blue-400'}`}>
-                                    {day}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
+                                    ? 'bg-blue-500 text-white border-blue-500'
+                                    : 'bg-white text-gray-700 border-gray-300 hover:border-blue-400'}`}>
+                            {day}
+                        </button>
+                    ))}
                 </div>
+
+                <Title order={3}>Available Times</Title>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {times.map(time => (
+                        <button key={time} onClick={() => handleSelectTime(time)}
+                            className={`px-4 py-2 rounded-md border transition-colors 
+                                    ${selectedTimes.includes(time)
+                                    ? 'bg-blue-500 text-white border-blue-500'
+                                    : 'bg-white text-gray-700 border-gray-300 hover:border-blue-400'}`}>
+                            {time}
+                        </button>
+                    ))}
+                </div>
+                <Title order={3}>Preferred Roles</Title>
+                <div>
+                    <MultiSelect
+                        data={roles}
+                        placeholder="Select roles"
+                        searchable
+                        value={selectedRoles}
+                        onChange={setRoles}
+                    />
+                </div>
+
                 <div className="flex items-center justify-between p-6 border-t bg-gray-50">
-                     <Button onClick={onExit} variant="outline">
-                            Cancel
-                        </Button>
-                        <Button onClick={handleSubmit}>
-                            Apply Filters
-                        </Button>
+                    <Button onClick={onExit} variant="outline">
+                        Cancel
+                    </Button>
+                    <Button onClick={handleSubmit}>
+                        Apply Filters
+                    </Button>
                 </div>
-            </div>
 
-            {/* <Button onClick={() => onSubmit(filterData)}> Submit</Button> */}
-
-
-        </div>
+            </Stack>
+        </Modal>
     )
 }

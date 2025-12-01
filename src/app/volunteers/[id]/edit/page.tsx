@@ -25,9 +25,7 @@ export default async function EditVolunteerPage({ params }: { params: Promise<{ 
                 </Title>
                 <VolunteerEditForm volunteer={volunteer}/>
             </Paper>
-
         </Container>
-
     );
 
 }

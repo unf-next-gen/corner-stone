@@ -1,8 +1,11 @@
 "use client"
-import { Volunteer } from "./../types";
+import { Volunteer, Availability } from "./../types";
 import VolunteerFilterModal from "./FilterModal/VolunteerFilterModal";
 import VolunteerTable from "./Tables/VolunteerTable";
 import { useState } from "react";
+import { FilterData } from "./../types";
+import { filterProps } from "@mantine/core";
+import { handleDays, handleTimes, handleRoles } from "../helpers";
 
 export default function VolunteerManager({ data }: { data: Volunteer[] }){
 
@@ -10,71 +13,42 @@ export default function VolunteerManager({ data }: { data: Volunteer[] }){
     const [volunteers, setVolunteers] = useState<Volunteer[]>(data);
     const [initialVolunteers, setInitialVolunteers] = useState<Volunteer[]>(data);
 
-
     function resetFilter() {
-        //console.log(initialVolunteers);
         setVolunteers(initialVolunteers);
     }
 
-    function applyFilter(filterData: {
-        monday: boolean;
-        tuesday: boolean;
-        wednesday: boolean;
-        thursday: boolean;
-        friday: boolean;
-        saturday: boolean;
-        sunday: boolean;
+    function applyFilter(filterData: FilterData) {
 
-    }) {
+       console.log("Filter DATA ", {filterData});
+       
+       let filteredVolunteers = [...initialVolunteers];
+        
+       if(filterData.days.length > 0){
 
-        let filterDay: string | null = null;
-        const days: string[] = [];
+        filteredVolunteers = handleDays(filterData, filteredVolunteers);
 
+       }
+       
+       if(filterData.times.length > 0){
+        
+        filteredVolunteers = handleTimes(filterData, filteredVolunteers);
+        
+       }
+       
+       if(filterData.roles.length > 0){
+        
+        filteredVolunteers = handleRoles(filterData, filteredVolunteers);
+        
+       }
 
-        for (const day in filterData) {
-
-            const key = day as keyof typeof filterData;
-            if (filterData[key]) {
-
-                filterDay = day;
-                //console.log(typeof(filterDay));
-                console.log('Im pushing ' + { filterDay });
-                days.push(filterDay);
-
-                //console.log(filterDay);
-
-            } else {
-                console.log('Im not pushing ' + { filterDay });
-            }
-        }
-        console.log(days);
-
-        const filteredData = volunteers?.filter(volunteer => {
-            let isAvailable = false;
-
-
-
-            for (const day of days) {
-
-                console.log(day);
-
-                const ofDay = day as keyof typeof volunteer.availability;
-
-                isAvailable = volunteer.availability[ofDay];
-
-            }
-
-            return isAvailable;
-            // const ofDay = filterDay as keyof typeof volunteer.availability;
-            // return volunteer.availability[ofDay];
-        })
-        //console.log("Filterdata");
-        //console.log(filterData);
-        //console.log(filteredData);
-
-        setVolunteers(filteredData!);
-
+       setVolunteers(filteredVolunteers);
     }
+
+  
+
+    
+
+
 
     return (
 
