@@ -6,7 +6,7 @@ import { useState } from "react";
 import { FilterData } from "./../types";
 import { handleDays, handleTimes, handleRoles } from "../helpers";
 import { IconFilter } from "@tabler/icons-react";
-import { Button } from "@mantine/core";
+import { Button, Stack, Flex } from "@mantine/core";
 
 export default function VolunteerManager({ data }: { data: Volunteer[] }){
 
@@ -52,11 +52,14 @@ export default function VolunteerManager({ data }: { data: Volunteer[] }){
 
     return (
 
-        <div>
-            <div className="py-4 flex-col">
-                <div>
-                    
-                </div>
+        <Stack>
+            <Flex
+            gap="md"
+      justify="flex-start"
+      align="flex-start"
+      direction="row"
+      wrap="wrap">
+                
                 <Button
                 
                     leftSection={<IconFilter size={16}/>}
@@ -69,7 +72,7 @@ export default function VolunteerManager({ data }: { data: Volunteer[] }){
                     onClick={() => resetFilter()}>
                     Reset Filters
                 </Button>
-            </div>
+            </Flex>
 
 
             <VolunteerFilterModal
@@ -78,6 +81,6 @@ export default function VolunteerManager({ data }: { data: Volunteer[] }){
                 onSubmit={applyFilter} />
 
             <VolunteerTable data={volunteers} />
-        </div>
+        </Stack>
     )
 }

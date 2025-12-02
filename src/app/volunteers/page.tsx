@@ -25,8 +25,8 @@ export default async function Volunteers() {
 
 
     return (
-        <Stack gap="sm">
-            <Paper withBorder>
+        <Stack gap="sm" h="100%">
+            <Paper withBorder h="100%">
                 <Stack>
                     <Title order={1}>Volunteer Directory</Title>
                     <Divider />

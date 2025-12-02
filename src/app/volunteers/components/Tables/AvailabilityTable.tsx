@@ -1,6 +1,7 @@
 import { Availability } from "../../types";
 import { Table, Stack, Title } from "@mantine/core";
 import { isAvailable } from "../../helpers";
+import { IconX, IconCheck } from "@tabler/icons-react";
 
 export default function AvailabilityTable({ data }: { data: Availability }) {
 
@@ -14,36 +15,37 @@ export default function AvailabilityTable({ data }: { data: Availability }) {
     }
 
     return (
-        <Stack gap="sm">
+        <Stack gap="sm" p="md">
             <Title order={2}>Availability</Title>
-            <Table>
-            <thead>
-                <tr>
-                    <th>Time</th>
+            <Table withColumnBorders withTableBorder withRowBorders>
+            <Table.Thead>
+                <Table.Tr>
+                    <Table.Th>Time</Table.Th>
                     {day_labels.map(day => (
-                        <th key={day} style={{ textAlign: 'center' }}>{day}</th>
+                        <Table.Th key={day} style={{ textAlign: 'center' }}>{day}</Table.Th>
                     ))}
-                </tr>
-            </thead>
-            <tbody>
+                </Table.Tr>
+            </Table.Thead>
+            <Table.Tbody>
                 {time_slots.map(slot => (
-                    <tr key={slot}>
-                        <th style={{ textTransform: 'capitalize' }}>{slot}</th>
+                    <Table.Tr key={slot}>
+                        <Table.Th style={{ textTransform: 'capitalize' }}>{slot}</Table.Th>
                         {days.map(day => (
-                            <td
+                            <Table.Td
                                 key={day}
                                 style={{
                                     textAlign: 'center',
                                     backgroundColor: isAvailable(day, slot, data) ? '#d4edda' : '#f8d7da',
                                     fontWeight: 'bold'
                                 }}
+
                             >
-                                {isAvailable(day, slot, data) ? '✓' : '✗'}
-                            </td>
+                                {isAvailable(day, slot, data) ? (<IconCheck size={18}/>) : (<IconX size={18}/>)}
+                            </Table.Td>
                         ))}
-                    </tr>
+                    </Table.Tr>
                 ))}
-            </tbody>
+            </Table.Tbody>
         </Table>
         </Stack>
         
