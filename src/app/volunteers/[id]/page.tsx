@@ -1,6 +1,5 @@
 
-import { Container, Title, Group, Button, Stack } from "@mantine/core";
-import Link from "next/link";
+import { Container, Stack } from "@mantine/core";
 import { getUser } from "@/app/auth/actions";
 import { redirect } from "next/navigation";
 import { GetVolunteerById } from "../actions";

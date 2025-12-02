@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Table, TextInput, Text, Anchor, Avatar, Group } from "@mantine/core";
+import { Table, TextInput, Text, Avatar, Group } from "@mantine/core";
 import { Volunteer, Availability } from "../../types";
 import Link from 'next/link';
 
@@ -53,6 +53,7 @@ export default function VolunteerTable({ data }: { data: Volunteer[] }) {
                     fontWeight: "bold",
                     fontSize: "16px",
                   }}
+                  key={header}
                 >
                   {header}
                 </Table.Th>

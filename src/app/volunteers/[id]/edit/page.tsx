@@ -1,5 +1,5 @@
 import { Container, Title, Paper } from "@mantine/core";
-import { redirect, notFound } from "next/navigation";
+import { redirect} from "next/navigation";
 import { getUser } from "../../../auth/actions";
 import { GetVolunteerById } from "../../actions";
 import VolunteerEditForm from "../../components/Forms/VolunteerForm";

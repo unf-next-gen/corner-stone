@@ -6,8 +6,6 @@ export function handleDays(filterData: FilterData, filteredVolunteers: Volunteer
 
     filteredVolunteers = filteredVolunteers.filter(v => {
 
-        let doesMatch = true;
-
         for(const day of filterData.days) {
 
             const key = day.toLowerCase() as keyof Availability;
@@ -22,7 +20,7 @@ export function handleDays(filterData: FilterData, filteredVolunteers: Volunteer
 
         }
 
-        return doesMatch;
+        return true;
     });
 
     return filteredVolunteers;

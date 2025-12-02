@@ -1,6 +1,6 @@
 import { Volunteer } from "../../types";
-import { Stack, Text, Group, Avatar, Paper, Divider, Flex, Title, Badge, Button, Grid, Card } from "@mantine/core";
-import { IconPhone, IconMail, IconMapPin, IconFileText, IconCalendar, IconEdit } from '@tabler/icons-react';
+import { Stack, Text, Group, Avatar, Paper, Divider, Title, Badge, Button, Grid, Card } from "@mantine/core";
+import { IconPhone, IconMail, IconEdit } from '@tabler/icons-react';
 import { returnTimeActive } from "../../helpers";
 
 export default function VolunteerInfo({ data }: { data: Volunteer }) {

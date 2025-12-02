@@ -50,48 +50,6 @@ export interface Availability {
   sunday: string[];
 }
 
-
-
-export interface FilterAvailableData{
-    
-    monday: {
-        morning: Boolean;
-        afternoon: Boolean;
-        evening: Boolean;
-    };
-    tuesday: {
-        morning: Boolean;
-        afternoon: Boolean;
-        evening: Boolean;
-    };
-    wednesday: {
-        morning: Boolean;
-        afternoon: Boolean;
-        evening: Boolean;
-    };
-    thursday: {
-        morning: Boolean;
-        afternoon: Boolean;
-        evening: Boolean;
-    };
-    friday: {
-        morning: Boolean;
-        afternoon: Boolean;
-        evening: Boolean;
-    };
-    saturday: {
-        morning: Boolean;
-        afternoon: Boolean;
-        evening: Boolean;
-    };
-    sunday: {
-        morning: Boolean;
-        afternoon: Boolean;
-        evening: Boolean;
-    };
-
-};
-
 export interface FilterData{
     days: string[],
     times: string[],

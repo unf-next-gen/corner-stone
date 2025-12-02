@@ -1,10 +1,9 @@
 "use client"
-import { Volunteer, Availability } from "./../types";
+import { Volunteer} from "./../types";
 import VolunteerFilterModal from "./FilterModal/VolunteerFilterModal";
 import VolunteerTable from "./Tables/VolunteerTable";
 import { useState } from "react";
 import { FilterData } from "./../types";
-import { filterProps } from "@mantine/core";
 import { handleDays, handleTimes, handleRoles } from "../helpers";
 import { IconFilter } from "@tabler/icons-react";
 import { Button } from "@mantine/core";
@@ -13,8 +12,8 @@ export default function VolunteerManager({ data }: { data: Volunteer[] }){
 
     const [isFilterOpen, setFilterState] = useState(false);
     const [volunteers, setVolunteers] = useState<Volunteer[]>(data);
-    const [initialVolunteers, setInitialVolunteers] = useState<Volunteer[]>(data);
     const [filtersNumber, setFilterNumber] = useState<number>(0)
+    const initialVolunteers = data;
 
     function resetFilter() {
         setVolunteers(initialVolunteers);
