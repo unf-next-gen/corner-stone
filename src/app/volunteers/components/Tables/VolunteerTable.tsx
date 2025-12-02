@@ -74,11 +74,11 @@ export default function VolunteerTable({ data }: { data: Volunteer[] }) {
                   </Link>
                 </Table.Td>
                 <Table.Td style={{ textAlign: "left" }}>
-                  <Text fz="xs" c="dimmed">{v.phone}</Text>
+                  <Text fz="xs" c="dimmed">{v.email}</Text>
                 </Table.Td>
                 <Table.Td style={{ textAlign: "left" }}>
                   <Text fz="xs" c="dimmed">
-                    {v.email}
+                    {v.phone}
                   </Text>
                 </Table.Td>
                 <Table.Td style={{ textAlign: "left" }}>
