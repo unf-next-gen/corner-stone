@@ -25,6 +25,8 @@ export async function GetVolunteers(){
     return data; 
 }
 
+
+
 export async function GetVolunteerById(id: string): Promise<Volunteer>{
 
     const supabase = await createClient();
@@ -37,7 +39,7 @@ export async function GetVolunteerById(id: string): Promise<Volunteer>{
 
     const { data, error } = await supabase
     .from('volunteers')
-    .select('*')
+    .select('*, volunteer_availability (*)')
     .eq('id', id)
     .single() as { data: Volunteer; error: PostgrestError | null}
     
@@ -47,16 +49,13 @@ export async function GetVolunteerById(id: string): Promise<Volunteer>{
 export async function UpdateVolunteer(id: string, formdata: FormData){
 
     const supabase = await createClient();
-
     const { data: { user } } = await supabase.auth.getUser();
 
     if( !user ){
         throw new Error("User not authenticated");
     }
 
-    const originalVolunteer = GetVolunteerById(id);
-
-    //add validation
+    const originalVolunteer = await GetVolunteerById(id);
 
     const updatedVolunteer = {
 
@@ -64,9 +63,6 @@ export async function UpdateVolunteer(id: string, formdata: FormData){
         last_name: formdata.get('last_name'),
         
     }
-
-
-
 }
 
 export async function CreateVolunteer(formData: FormData){
@@ -94,5 +90,4 @@ export async function CreateVolunteer(formData: FormData){
  // await supabase.from('volunteers').insert()
 
 }
-
 

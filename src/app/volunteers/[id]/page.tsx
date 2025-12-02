@@ -25,18 +25,7 @@ export default async function Home({ params }: { params: Promise<{ id: string }>
             <Stack gap="lg">
                 {volunteer  && (
                 <Stack gap="sm">
-                    <Group justify="space-between" align="center">
-
-                         <Title order={1}>{volunteer.first_name} {volunteer.last_name}</Title>
-                         <Link
-                         href={`/volunteers/${volunteer.id}/edit`}
-                         style={{ textDecoration: "none" }}>
-
-                            <Button variant="light">
-                                Edit
-                            </Button>
-                         </Link>
-                    </Group>
+                    
                     <BackButton href="/volunteers"/>
                 </Stack>
                 )}

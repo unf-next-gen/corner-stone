@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Table, TextInput, Text, Anchor } from "@mantine/core";
+import { Table, TextInput, Text, Anchor, Avatar, Group } from "@mantine/core";
 import { Volunteer, Availability } from "../../types";
 import Link from 'next/link';
 
@@ -20,6 +20,7 @@ export default function VolunteerTable({ data }: { data: Volunteer[] }) {
     );
   }, [data, query]);
 
+  const table_headers = ["Name", "Email", "Phone", "Location", "Availability", "Joined"]
   return (
     <div>
 
@@ -28,6 +29,7 @@ export default function VolunteerTable({ data }: { data: Volunteer[] }) {
         value={query}
         onChange={(e) => setQuery(e.currentTarget.value)}
         mb="md"
+        w="50%"
       />
 
       <Table.ScrollContainer minWidth={800}>
@@ -44,72 +46,45 @@ export default function VolunteerTable({ data }: { data: Volunteer[] }) {
         >
           <Table.Thead>
             <Table.Tr>
-              <Table.Th
-                style={{
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  fontSize: "16px",
-                }}
-              >
-                First Name
-              </Table.Th>
-              <Table.Th
-                style={{
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  fontSize: "16px",
-                }}
-              >
-                Last Name
-              </Table.Th>
-              <Table.Th
-                style={{
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  fontSize: "16px",
-                }}
-              >
-                Phone Number
-              </Table.Th>
-              <Table.Th
-                style={{
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  fontSize: "16px",
-                }}
-              >
-                Email
-              </Table.Th>
-              <Table.Th
-                style={{
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  fontSize: "16px",
-                }}
-              >
-                Availability
-              </Table.Th>
+              {table_headers.map(header => (
+                <Table.Th
+                  style={{
+                    textAlign: "left",
+                    fontWeight: "bold",
+                    fontSize: "16px",
+                  }}
+                >
+                  {header}
+                </Table.Th>
+              ))}
+
+
             </Table.Tr>
           </Table.Thead>
 
           <Table.Tbody>
             {filtered.map((v) => (
               <Table.Tr key={v.id}>
-                <Table.Td style={{ textAlign: "center" }}>
-                  <Link href={`/volunteers/${v.id}`}><Text fz="sm">{v.first_name}</Text></Link>
+                <Table.Td>
+                  <Link href={`/volunteers/${v.id}`}>
+                    <Group gap="sm" wrap="nowrap">
+                      <Avatar />
+                      <Text fz="xs" c="dimmed">{v.first_name} {v.last_name}</Text>
+                    </Group>
+                  </Link>
                 </Table.Td>
-                <Table.Td style={{ textAlign: "center" }}>
-                  <Text fz="sm">{v.last_name}</Text>
+                <Table.Td style={{ textAlign: "left" }}>
+                  <Text fz="xs" c="dimmed">{v.phone}</Text>
                 </Table.Td>
-                <Table.Td style={{ textAlign: "center" }}>
-                  <Text fz="sm">{v.phone}</Text>
-                </Table.Td>
-                <Table.Td style={{ textAlign: "center" }}>
-                  <Anchor href={`mailto:${v.email}`} target="_blank">
+                <Table.Td style={{ textAlign: "left" }}>
+                  <Text fz="xs" c="dimmed">
                     {v.email}
-                  </Anchor>
+                  </Text>
                 </Table.Td>
-                <Table.Td style={{ textAlign: "center" }}>
+                <Table.Td style={{ textAlign: "left" }}>
+                  <Text fz="xs" c="dimmed">{v.city}, {v.state}</Text>
+                </Table.Td>
+                <Table.Td style={{ textAlign: "left" }}>
                   <Text fz="xs" c="dimmed">
                     {(() => {
                       const av = v.volunteer_availability;
@@ -132,6 +107,9 @@ export default function VolunteerTable({ data }: { data: Volunteer[] }) {
                       return availableDays.length > 0 ? availableDays.join(", ") : "None";
                     })()}
                   </Text>
+                </Table.Td>
+                <Table.Td align="left">
+                  <Text fz="xs" c="dimmed">{v.created_at}</Text>
                 </Table.Td>
               </Table.Tr>
             ))}

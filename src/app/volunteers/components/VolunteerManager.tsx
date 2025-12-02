@@ -6,6 +6,7 @@ import { useState } from "react";
 import { FilterData } from "./../types";
 import { filterProps } from "@mantine/core";
 import { handleDays, handleTimes, handleRoles } from "../helpers";
+import { IconFilter } from "@tabler/icons-react";
 
 export default function VolunteerManager({ data }: { data: Volunteer[] }){
 
@@ -38,17 +39,11 @@ export default function VolunteerManager({ data }: { data: Volunteer[] }){
        if(filterData.roles.length > 0){
         
         filteredVolunteers = handleRoles(filterData, filteredVolunteers);
-        
+
        }
 
        setVolunteers(filteredVolunteers);
     }
-
-  
-
-    
-
-
 
     return (
 

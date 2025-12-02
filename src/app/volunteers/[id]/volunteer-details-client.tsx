@@ -1,42 +1,51 @@
+"use client"
+import { useState } from "react";
 import { Volunteer } from "../types";
+import AvailabilityTable from "../components/Tables/AvailabilityTable";
+import VolunteerInfo from "../components/Info/VolunteerInfo";
+import { Stack, Paper, Flex, Box, Button, Group } from "@mantine/core";
 
-export default function VolunteerDetailsClient({ volunteer }: {volunteer: Volunteer}){
+export default function VolunteerDetailsClient({ volunteer }: { volunteer: Volunteer }) {
+    const [activeTab, setActiveTab] = useState("availability");
 
+    return (
+        <Stack>
 
-    return(
-        <div className="container mx-auto p-6">
-            <div className="bg-white shadow-md rounded-lg p-6">
             
-                
+                <VolunteerInfo data={volunteer} />
+            
 
-                
-                <div className="mb-6">
-                    <h2 className="text-xl font-semibold mb-3">Contact Information</h2>
-                    <div className="space-y-2">
-                        <p><span className="font-medium">Email:</span> {volunteer.email}</p>
-                        <p><span className="font-medium">Phone:</span> {volunteer.phone}</p>
-                        <p><span className="font-medium">Joined:</span> {new Date(volunteer.created_at).toLocaleDateString()}</p>
-                    </div>
-                </div>
-
-                
-                <div>
-                    <h2 className="text-xl font-semibold mb-3">Availability</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        {Object.entries(volunteer.availability).map(([day, available]) => (
-                            <div
-                                key={day}
-                                className={`p-3 rounded ${available
-                                        ? 'bg-green-100 text-green-800'
-                                        : 'bg-gray-100 text-gray-500'
-                                    }`}
-                            >
-                                <span className="font-medium capitalize">{day}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </div>
+            <Box style={{ flex: 1, minWidth: 0 }}>
+                <Paper withBorder>
+                    <Group gap={0} style={{ borderBottom: '1px solid #dee2e6' }}>
+                        <Button
+                            variant={activeTab === "availability" ? "light" : "subtle"}
+                            onClick={() => setActiveTab("availability")}
+                            style={{ borderRadius: 0, borderBottom: activeTab === "availability" ? '2px solid #228be6' : 'none' }}
+                        >
+                            Availability
+                        </Button>
+                        <Button
+                            variant={activeTab === "documents" ? "light" : "subtle"}
+                            onClick={() => setActiveTab("documents")}
+                            style={{ borderRadius: 0, borderBottom: activeTab === "documents" ? '2px solid #228be6' : 'none' }}
+                        >
+                            Documents
+                        </Button>
+                        <Button
+                            variant={activeTab === "events" ? "light" : "subtle"}
+                            onClick={() => setActiveTab("events")}
+                            style={{ borderRadius: 0, borderBottom: activeTab === "events" ? '2px solid #228be6' : 'none' }}
+                        >
+                            Events
+                        </Button>
+                    </Group>
+                    <Box p="md">
+                        {activeTab === "overview" && <div>Overview content</div>}
+                        {activeTab === "availability" && <AvailabilityTable data={volunteer.volunteer_availability} />}
+                    </Box>
+                </Paper>
+            </Box>
+        </Stack>
     );
 }

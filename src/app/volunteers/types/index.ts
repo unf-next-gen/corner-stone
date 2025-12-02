@@ -21,8 +21,15 @@ export interface Volunteer {
     zip: string | null;
     roles: string[] | null;
 
-    volunteer_availability: Availability | null;
+    volunteer_availability: Availability;
 
+}
+
+export interface Documents{
+    url: string;
+    name: string;
+    size: number;
+    type: string;
 }
 
 export interface Availability {

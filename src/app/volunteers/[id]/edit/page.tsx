@@ -2,7 +2,7 @@ import { Container, Title, Paper } from "@mantine/core";
 import { redirect, notFound } from "next/navigation";
 import { getUser } from "../../../auth/actions";
 import { GetVolunteerById } from "../../actions";
-import VolunteerEditForm from "../../components/VolunteerForm";
+import VolunteerEditForm from "../../components/Forms/VolunteerForm";
 
 export default async function EditVolunteerPage({ params }: { params: Promise<{ id: string }> }) {
 

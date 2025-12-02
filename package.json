@@ -9,11 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@mantine/core": "^8.3.3",
+    "@mantine/core": "^8.3.9",
     "@mantine/form": "^8.3.3",
-    "@mantine/hooks": "^8.3.3",
-    "@mantine/modals": "^8.3.3",
-    "@mantine/notifications": "^8.3.3",
+    "@mantine/hooks": "^8.3.9",
+    "@mantine/modals": "^8.3.9",
+    "@mantine/notifications": "^8.3.9",
     "@preact/signals-react": "^3.6.1",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.58.0",

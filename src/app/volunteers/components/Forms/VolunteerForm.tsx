@@ -1,4 +1,4 @@
-import { Volunteer } from "../types";
+import { Volunteer } from "../../types";
 
 export default function VolunteerEditForm({ volunteer }: {volunteer: Volunteer}){
 

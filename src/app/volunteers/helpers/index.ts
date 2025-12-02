@@ -68,3 +68,30 @@ export function handleRoles(filterData: FilterData, filteredVolunteers: Voluntee
     });
 }
 
+
+export function isAvailable(day: string, timeSlot: string, data: Availability){
+
+    return data[day as keyof Availability].includes(timeSlot) || false;
+    
+}
+
+export function returnTimeActive(createdAt: string){
+
+    const startDate = new Date(createdAt);
+    const today = new Date();
+
+    const diffMilliseconds = today.getTime() - startDate.getTime();
+
+    const diffDays = Math.floor(diffMilliseconds / (1000 * 60 * 60 * 24));
+
+    if(diffDays < 30){
+        return `${diffDays} Days`
+    } else if (diffDays < 365) {
+        const months = Math.floor(diffDays / 30);
+        return `${months} ${months === 1 ? 'month' : 'months'}`;
+    } else {
+        const years = Math.floor(diffDays / 365);
+        return `${years} ${years === 1 ? 'year' : 'years'}`;
+    }
+}
+
