@@ -58,17 +58,18 @@ export default function VolunteerManager({ data }: { data: Volunteer[] }){
                 <div>
                     
                 </div>
-                <Button 
+                <Button
+                
                     leftSection={<IconFilter size={16}/>}
                     onClick={() => setFilterState(true)}>
                     {`Filter${filtersNumber > 0 ? `(${filtersNumber})` : '' }`}
                 </Button>
                 
 
-                <button className="px-4 py-2 rounded-md border transition-colors bg-white text-gray-700 border-gray-300 hover:border-blue-400"
+                <Button 
                     onClick={() => resetFilter()}>
                     Reset Filters
-                </button>
+                </Button>
             </div>
 
 
