@@ -4,13 +4,14 @@ import { GetVolunteers } from "./actions";
 import { getUser } from "../auth/actions";
 import { redirect } from 'next/navigation';
 import VolunteerManager from "./components/VolunteerManager";
+import { Stack, Paper, Title, Divider } from "@mantine/core";
 
 export default async function Volunteers() {
 
     const user = await getUser;
 
     if (!user) {
-    redirect('/auth/login');
+        redirect('/auth/login');
     }
 
     const volunteers = await GetVolunteers();
@@ -24,8 +25,14 @@ export default async function Volunteers() {
 
 
     return (
-        <div>
-            <VolunteerManager data={volunteers} />
-        </div>
+        <Stack gap="sm">
+            <Paper withBorder>
+                <Stack>
+                    <Title order={1}>Volunteer Directory</Title>
+                    <Divider />
+                    <VolunteerManager data={volunteers} />
+                </Stack>
+            </Paper>
+        </Stack>
     );
 }
