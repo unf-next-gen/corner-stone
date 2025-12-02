@@ -22,14 +22,21 @@ export interface Volunteer {
     roles: string[] | null;
 
     volunteer_availability: Availability;
+    volunteer_documents: Documents[];
 
 }
 
+
+
 export interface Documents{
+    id: string;
+    uploaded_at: string;
+    volunteer_id: string;
+    file_name: string;
+    file_size: number;
+    document_type: string;
+    document_status: string;
     url: string;
-    name: string;
-    size: number;
-    type: string;
 }
 
 export interface Availability {

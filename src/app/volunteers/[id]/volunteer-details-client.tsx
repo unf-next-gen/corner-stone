@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Volunteer } from "../types";
 import AvailabilityTable from "../components/Tables/AvailabilityTable";
 import VolunteerInfo from "../components/Info/VolunteerInfo";
+import VolunteerDocs from "../components/Info/VolunteerDocs";
 import { Stack, Paper, Flex, Box, Button, Group } from "@mantine/core";
 
 export default function VolunteerDetailsClient({ volunteer }: { volunteer: Volunteer }) {
@@ -43,6 +44,7 @@ export default function VolunteerDetailsClient({ volunteer }: { volunteer: Volun
                     <Box p="md">
                         {activeTab === "overview" && <div>Overview content</div>}
                         {activeTab === "availability" && <AvailabilityTable data={volunteer.volunteer_availability} />}
+                        {activeTab === "documents" && <VolunteerDocs data={volunteer.volunteer_documents ?? []} />}
                     </Box>
                 </Paper>
             </Box>

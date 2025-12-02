@@ -39,10 +39,11 @@ export async function GetVolunteerById(id: string): Promise<Volunteer>{
 
     const { data, error } = await supabase
     .from('volunteers')
-    .select('*, volunteer_availability (*)')
+    .select('*, volunteer_availability (*), volunteer_documents (*)')
     .eq('id', id)
     .single() as { data: Volunteer; error: PostgrestError | null}
     
+    console.log(data);
     return data;
 }
 
