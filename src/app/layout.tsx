@@ -4,7 +4,7 @@ import { MantineProvider} from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
-import "./globals.css";
+import '@/global/styles/globals.css'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
