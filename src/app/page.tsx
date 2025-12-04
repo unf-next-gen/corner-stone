@@ -52,7 +52,6 @@ export default async function Home() {
               View Profile
             </Button>
           </Link>
-
           <form action={signOut}>
             <Button type="submit" variant="outline" color="red">
               Sign Out

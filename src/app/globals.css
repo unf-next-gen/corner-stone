@@ -35,3 +35,21 @@ body {
 .mantine-Text-c[data-c="dimmed"] {
   color: #868e96 !important;
 }
+
+/* Ensure Mantine components have proper text color */
+.mantine-Text-root,
+.mantine-Input-input,
+.mantine-Textarea-input,
+.mantine-Select-input {
+  color: #0c0e16 !important;
+}
+
+.mantine-Input-label,
+.mantine-Textarea-label,
+.mantine-Select-label {
+  color: #495057 !important;
+}
+
+.mantine-Text-c[data-c="dimmed"] {
+  color: #868e96 !important;
+}
