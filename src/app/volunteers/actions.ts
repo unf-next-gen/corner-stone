@@ -6,27 +6,27 @@ import { PostgrestError } from "@supabase/supabase-js";
 
 //todo
 //add error handling
-export async function GetVolunteers(){
+export async function GetVolunteers() {
 
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
-    if ( !user ){
-        throw new Error("User not authenticated");
-    }
+  if (!user) {
+    throw new Error("User not authenticated");
+  }
 
-    const { data, error } = await supabase
-  .from("volunteers")
-  .select(`
+  const { data, error } = await supabase
+    .from("volunteers")
+    .select(`
     *,
     volunteer_availability (*)
   `) as { data: Volunteer[] | null; error: PostgrestError | null };
-    
-    if( error ){
-        
-        throw new Error("Failed to fetch volunteers");
-    }
-    return data; 
+
+  if (error) {
+
+    throw new Error("Failed to fetch volunteers");
+  }
+  return data;
 }
 
 
@@ -34,28 +34,28 @@ export async function GetVolunteers(){
 //add error handling
 //add fetch for events
 
-export async function GetVolunteerById(id: string): Promise<Volunteer>{
+export async function GetVolunteerById(id: string): Promise<Volunteer> {
 
-    const supabase = await createClient();
+  const supabase = await createClient();
 
-    const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
 
-    if ( !user ){
-        throw new Error("User not authenticated");
-    }
+  if (!user) {
+    throw new Error("User not authenticated");
+  }
 
-    const { data, error } = await supabase
+  const { data, error } = await supabase
     .from('volunteers')
     .select('*, volunteer_availability (*), volunteer_documents (*)')
     .eq('id', id)
-    .single() as { data: Volunteer; error: PostgrestError | null}
+    .single() as { data: Volunteer; error: PostgrestError | null }
 
-    if( error ){
-        throw new Error("Failed to fetch volunteer");
-    }
-    
-    console.log(data);
-    return data;
+  if (error) {
+    throw new Error("Failed to fetch volunteer");
+  }
+
+  console.log(data);
+  return data;
 }
 
 //todo - createUpdate volunteer

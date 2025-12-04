@@ -8,31 +8,27 @@ import { Stack, Paper, Title, Divider } from "@mantine/core";
 
 export default async function Volunteers() {
 
-    const user = await getUser;
-
-    if (!user) {
-        redirect('/auth/login');
-    }
-
-    const volunteers = await GetVolunteers();
-
-    if (!volunteers) {
-        return (<div className="p-8 text-center">
-            <h1 className="text-2xl font-bold text-red-600">ENothing to show here</h1>
-
-        </div>);
-    }
 
 
-    return (
-        <Stack gap="sm" h="100%">
-            <Paper withBorder h="100%">
-                <Stack>
-                    <Title order={1}>Volunteer Directory</Title>
-                    <Divider />
-                    <VolunteerManager data={volunteers} />
-                </Stack>
-            </Paper>
+  const volunteers = await GetVolunteers();
+
+  if (!volunteers) {
+    return (<div className="p-8 text-center">
+      <h1 className="text-2xl font-bold text-red-600">Nothing to show here</h1>
+
+    </div>);
+  }
+
+
+  return (
+    <Stack gap="sm" h="100%">
+      <Paper withBorder h="100%">
+        <Stack>
+          <Title order={1}>Volunteer Directory</Title>
+          <Divider />
+          <VolunteerManager data={volunteers} />
         </Stack>
-    );
+      </Paper>
+    </Stack>
+  );
 }

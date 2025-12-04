@@ -16,14 +16,14 @@ export default function VolunteerManager({ data }: { data: Volunteer[] }){
     const initialVolunteers = data;
 
     function resetFilter() {
-        setVolunteers(initialVolunteers);
+        setVolunteers(data);
         setFilterNumber(0);
     }
 
     function applyFilter(filterData: FilterData) {
         
         let filterNum = 0;
-       console.log("Filter DATA ", {filterData});
+       
        
        let filteredVolunteers = [...initialVolunteers];
         

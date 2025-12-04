@@ -8,28 +8,23 @@ import { BackButton } from "@/global/components/back-button";
 
 export default async function Home({ params }: { params: Promise<{ id: string }> }) {
 
-    const user = await getUser();
 
-    if (!user) {
 
-        redirect("/auth/login");
-    }
+  const { id } = await params;
 
-    const { id } = await params;
+  const volunteer = await GetVolunteerById(id);
 
-    const volunteer = await GetVolunteerById(id);
+  return (
+    <Container size="xl" py="xl">
+      <Stack gap="lg">
+        {volunteer && (
+          <Stack gap="sm">
 
-    return (
-        <Container size="xl" py="xl">
-            <Stack gap="lg">
-                {volunteer  && (
-                <Stack gap="sm">
-                    
-                    <BackButton href="/volunteers"/>
-                </Stack>
-                )}
-                <VolunteerDetailsClient volunteer={volunteer} />
-            </Stack>
-        </Container>
-    );
+            <BackButton />
+          </Stack>
+        )}
+        <VolunteerDetailsClient volunteer={volunteer} />
+      </Stack>
+    </Container>
+  );
 }
