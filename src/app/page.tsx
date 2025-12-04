@@ -42,6 +42,11 @@ export default async function Home() {
               View Events
             </Button>
           </Link>
+          <Link href="/volunteers">
+            <Button variant="filled">
+              View Volunteers
+            </Button>
+          </Link>
           <Link href="/profile">
             <Button variant="light">
               View Profile
