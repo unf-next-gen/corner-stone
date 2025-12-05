@@ -1,27 +1,18 @@
+import { Navbar } from "@/global/components/navbar";
+import "@/global/styles/globals.css";
+import { theme } from "@/global/styles/mantine-theme";
+import { MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
+import { Notifications } from "@mantine/notifications";
+import "@mantine/notifications/styles.css";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { MantineProvider} from '@mantine/core';
-import { Notifications } from '@mantine/notifications';
-import '@mantine/core/styles.css';
-import '@mantine/notifications/styles.css';
-import '@/global/styles/globals.css'
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Corner Stone",
   description: "Corner Stone Application",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -29,14 +20,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&family=Lexend:wght@100..900&family=Outfit:wght@100..900&family=Young+Serif&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <MantineProvider>
+      <body className="antialiased">
+        <MantineProvider theme={theme}>
           <Notifications />
-          {children}
+          <div className="grid grid-cols-[80px_1fr] min-h-screen">
+            <Navbar />
+            <main className="col-start-2">{children}</main>
+          </div>
         </MantineProvider>
       </body>
     </html>
