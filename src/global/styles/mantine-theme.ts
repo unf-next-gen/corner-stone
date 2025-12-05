@@ -1,10 +1,9 @@
 import { createTheme } from "@mantine/core";
 
 export const theme = createTheme({
-  primaryColor: "blue",
+  primaryColor: "grapeSoda",
   defaultRadius: "md",
 
-  // Color palette with better contrast
   colors: {
     blue: [
       "#e7f5ff",
@@ -30,18 +29,65 @@ export const theme = createTheme({
       "#212529",
       "#0c0e16",
     ],
+    grapeSoda: [
+      "#fdeffd",
+      "#f1dff0",
+      "#debcdc",
+      "#cb98c8",
+      "#bb79b7",
+      "#b165ac",
+      "#ad5ba8",
+      "#9a4c95", // base color
+      "#884184",
+      "#783674",
+    ],
+    blackberryCream: [
+      "#f7f2f8",
+      "#e9e2eb",
+      "#d4c1d7",
+      "#be9ec3",
+      "#ab80b1",
+      "#a06da7",
+      "#9a63a3",
+      "#86538e",
+      "#78497f",
+      "#4d2d52", // base color
+    ],
+    lilacAsh: [
+      "#f0e2e4",
+      "#d8c4c7",
+      "#c1a5a9", // base color
+      "#ac888d",
+      "#a0777c",
+      "#9b6d74",
+      "#875c62",
+      "#7a5157",
+      "#6e434a",
+      "#5a363c",
+    ],
+    midnightViolet: [
+      "#f2f2f8",
+      "#e2e1ea",
+      "#c2bfd5",
+      "#a09bc1",
+      "#847db0",
+      "#7269a6",
+      "#6960a2",
+      "#59508e",
+      "#4f4680",
+      "#1d1a31", // base color
+    ],
   },
 
   white: "#ffffff",
   black: "#0c0e16",
 
-  // Better contrast for text
   fontFamily:
-    "var(--font-geist-sans), -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+    "'Kumbh Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
 
   headings: {
     fontFamily:
-      "var(--font-geist-sans), -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+      "'Kumbh Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
     fontWeight: "600",
   },
 
@@ -51,7 +97,6 @@ export const theme = createTheme({
     deg: 135,
   },
 
-  // CSS variables for better control
   other: {
     bodyBackground: "#f8f9fa",
     textColor: "#0c0e16",
