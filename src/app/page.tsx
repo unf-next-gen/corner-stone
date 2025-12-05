@@ -1,13 +1,13 @@
-import { Container, Title, Text, Button, Paper, Group } from '@mantine/core';
-import { getUser, signOut } from './auth/actions';
-import { redirect } from 'next/navigation';
-import Link from 'next/link';
+import { Container, Title, Text, Button, Paper, Group } from "@mantine/core";
+import { getUser, signOut } from "./auth/actions";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default async function Home() {
   const user = await getUser();
 
   if (!user) {
-    redirect('/auth/login');
+    redirect("/auth/login");
   }
 
   return (
@@ -16,12 +16,12 @@ export default async function Home() {
         <Title order={1} mb="md" ta="center">
           Welcome to Corner Stone!
         </Title>
-        
+
         <Text size="lg" mb="xl" ta="center" c="dimmed">
           Authentication successful! You are now logged in.
         </Text>
 
-        <Paper p="md" bg="green.0" radius="md" mb="xl">
+        <Paper p="md" bg="grapeSoda.2" radius="md" mb="xl">
           <Text size="sm" fw={500} mb="xs">
             User Information:
           </Text>
@@ -37,21 +37,6 @@ export default async function Home() {
         </Paper>
 
         <Group justify="center" gap="md">
-          <Link href="/events">
-            <Button variant="filled">
-              View Events
-            </Button>
-          </Link>
-          <Link href="/volunteers">
-            <Button variant="filled">
-              View Volunteers
-            </Button>
-          </Link>
-          <Link href="/profile">
-            <Button variant="light">
-              View Profile
-            </Button>
-          </Link>
           <form action={signOut}>
             <Button type="submit" variant="outline" color="red">
               Sign Out
