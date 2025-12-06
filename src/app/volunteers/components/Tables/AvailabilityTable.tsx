@@ -15,7 +15,7 @@ export default function AvailabilityTable({ data }: { data: Availability }) {
   }
 
   return (
-    <Stack gap="sm" p="md">
+    <Stack gap="sm" mt={"lg"}>
       <Title order={2}>Availability</Title>
       <Table withColumnBorders withTableBorder withRowBorders>
         <Table.Thead>
