@@ -30,9 +30,12 @@ export function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    getUserProfile().then((profile) => {
-      userInitialsSignal.value = profile?.initials;
-    });
+    const fetchProfile = async () => {
+      getUserProfile().then((profile) => {
+        userInitialsSignal.value = profile?.initials;
+      });
+    };
+    fetchProfile();
   }, []);
 
   const links = AppConfig.navbar.map((link) => (
