@@ -23,12 +23,12 @@ export default function VolunteerDetailsClient({ volunteer }: { volunteer: Volun
         </Tabs.List>
 
         <Tabs.Panel value="availability">
-          <Paper withBorder>
+          <Paper>
             <AvailabilityTable data={volunteer.volunteer_availability} />
           </Paper>
 
         </Tabs.Panel>
-        <Tabs.Panel value="documents">
+        <Tabs.Panel value="documents" >
           <VolunteerDocs data={volunteer.volunteer_documents} />
         </Tabs.Panel>
       </Tabs>
