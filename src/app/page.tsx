@@ -11,14 +11,14 @@ export default async function Home() {
   }
 
   return (
-    <Container size="md" py="xl">
+    <Container size="xl" py="xl">
       <Paper shadow="sm" p="xl" radius="md" withBorder>
-        <Title order={1} mb="md" ta="center">
-          Welcome to Corner Stone!
+        <Title order={1} mb="md">
+          Corner Stone, Welcome
         </Title>
 
-        <Text size="lg" mb="xl" ta="center" c="dimmed">
-          Authentication successful! You are now logged in.
+        <Text size="lg" mb="xl" c="dimmed">
+          User authentication successful.
         </Text>
 
         <Paper p="md" bg="grapeSoda.2" radius="md" mb="xl">
@@ -36,7 +36,7 @@ export default async function Home() {
           </Text>
         </Paper>
 
-        <Group justify="center" gap="md">
+        <Group gap="md">
           <form action={signOut}>
             <Button type="submit" variant="outline" color="red">
               Sign Out
