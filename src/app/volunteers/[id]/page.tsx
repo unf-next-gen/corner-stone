@@ -18,9 +18,9 @@ export default async function Home({ params }: { params: Promise<{ id: string }>
     <Container size="xl" py="xl">
       <Stack gap="lg">
         {volunteer && (
-          <Stack gap="sm">
+          <Stack gap="sm" maw={200}>
 
-            <BackButton />
+            <BackButton/>
           </Stack>
         )}
         <VolunteerDetailsClient volunteer={volunteer} />
