@@ -19,7 +19,6 @@ import type { EventFormProps } from '../types';
 
 export function EventForm({
   event,
-  mode = 'create',
 }: EventFormProps) {
   const router = useRouter();
   const [availableTags, setAvailableTags] = useState<Array<{ value: string; label: string }>>([]);

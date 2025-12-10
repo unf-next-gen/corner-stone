@@ -1,7 +1,5 @@
 
 import { Container, Stack } from "@mantine/core";
-import { getUser } from "@/app/auth/actions";
-import { redirect } from "next/navigation";
 import { GetVolunteerById } from "../actions";
 import VolunteerDetailsClient from "./volunteer-details-client";
 import { BackButton } from "@/global/components/back-button";
