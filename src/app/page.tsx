@@ -1,7 +1,6 @@
 import { Container, Title, Text, Button, Paper, Group } from "@mantine/core";
 import { getUser, signOut } from "./auth/actions";
 import { redirect } from "next/navigation";
-import Link from "next/link";
 
 export default async function Home() {
   const user = await getUser();

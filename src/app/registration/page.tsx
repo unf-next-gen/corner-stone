@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Box,
   Grid,
   Paper,
   Title,
@@ -661,7 +660,7 @@ export default function VolunteerRegisterPage() {
 
                 <Text size="sm">
                   We connect passionate volunteers with real community needs.
-                  Whether you're supporting outreach events, helping families,
+                  Whether you&apos;re supporting outreach events, helping families,
                   or assisting with operations, your time directly impacts the
                   people we serve.
                 </Text>
@@ -710,11 +709,11 @@ export default function VolunteerRegisterPage() {
                     What happens next?
                   </Title>
                   <Text size="sm" mt={4}>
-                    1. You'll get a confirmation email.
+                    1. You&apos;ll get a confirmation email.
                     <br />
                     2. A coordinator will review your info.
                     <br />
-                    3. You'll get access to upcoming events and sign-ups.
+                    3. You&apos;ll get access to upcoming events and sign-ups.
                   </Text>
                 </Paper>
 

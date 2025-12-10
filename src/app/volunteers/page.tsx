@@ -1,8 +1,6 @@
 // app/volunteers/page.tsx
 
 import { GetVolunteers } from "./actions";
-import { getUser } from "../auth/actions";
-import { redirect } from "next/navigation";
 import VolunteerManager from "./components/VolunteerManager";
 import { Stack, Paper, Title, Divider, Container } from "@mantine/core";
 
